@@ -31,7 +31,7 @@
 
             final Group group = new Group(students);
             System.out.println("Average mark is:" + s1.averageMark());
-            System.out.println(s1.uniqueEnglish());
+            System.out.println(s1.englishSort());
             System.out.println("Best student's information: " + group.bestStudentStream());
             System.out.println("Sorting without '3' mark: " + group.markSorting());
             System.out.println("Name sorting: " + group.nameSorting());

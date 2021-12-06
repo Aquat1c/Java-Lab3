@@ -1,5 +1,6 @@
 package Task3;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -38,6 +39,7 @@ public class Student {
     String getSurname() {
         return surname;
     }
+
     public void addMark(final int value, final String nameSubject) {
         for (int i = 0; i < subject.size(); i++) {
             if (Objects.equals(subject.get(i).getNameSubject(), nameSubject)) {
@@ -57,25 +59,27 @@ public class Student {
         return marks;
     }
     public double averageMark() {
-        double tmp = 0;
+        double sum = 0;
         int count = 0;
         for (final Mark mark : marks) {
-            tmp += mark.getMark().stream().mapToInt(value -> value).sum();
+            sum += mark.getMark().stream().mapToInt(value -> value).sum();
             count += mark.getMark().stream().mapToInt(value -> value).count();
         }
         if (count != 0)
-            return tmp / count;
+            return sum / count;
         else
             return 0;
+
     }
-    public List<Integer> uniqueEnglish() {
+    public List<Integer> englishSort() {
         for (int i = 0; i < subject.size(); i++) {
             if (subject.get(i).getNameSubject().equals("English")) {
-                return marks.get(i).getMark().stream().distinct().collect(Collectors.toList());
+                return marks.get(i).getMark().stream().collect(Collectors.toList());
             }
         }
-        return new ArrayList<>();
+        return (List<Integer>) new ArrayList<>().stream().distinct();
     }
+
     @Override
     public String toString() {
         return "ID: " + this.getId() + "," +
